@@ -1,0 +1,97 @@
+/* Marketing site (landing, About, Open source, Pricing, Privacy), following brand/guidelines.pdf v1.0:
+   Ink and Vellum carry ~90% of every layout; Angelite blue is reserved for the halo and small accents.
+   Type: IBM Plex Sans for headings and UI, IBM Plex Mono for model names and small labels,
+   UnifrakturMaguntia only for the wordmark and rare display moments (never below 32 px). */
+
+@theme {
+    --color-ink: #1f1c24;
+    --color-ink-soft: #2b2731;
+    --color-ink-muted: #615c68;
+    --color-vellum: #f1ede4;
+    --color-vellum-card: #f8f6f1;
+    --color-vellum-deep: #e6e0d3;
+    --color-angelite: #9aa8e8;
+    --color-deep-angelite: #6574c4;
+}
+
+.mkt {
+    background: var(--color-vellum);
+    color: var(--color-ink);
+    font-family: var(--font-plex-sans), system-ui, sans-serif;
+}
+
+.mkt ::selection {
+    background: var(--color-angelite);
+    color: var(--color-ink);
+}
+
+.mkt :focus-visible {
+    outline: 2px solid var(--color-deep-angelite);
+    outline-offset: 3px;
+}
+
+.mkt-display {
+    font-family: var(--font-plex-sans), system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+}
+
+.mkt-heading {
+    font-family: var(--font-plex-sans), system-ui, sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+}
+
+.mkt-fraktur {
+    font-family: var(--font-unifraktur), serif;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.mkt-data {
+    font-family: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+.mkt-prose p {
+    max-width: 66ch;
+    line-height: 1.7;
+    color: var(--color-ink-muted);
+}
+
+.mkt-rule {
+    border-color: color-mix(in srgb, var(--color-ink) 12%, transparent);
+}
+
+/* Gradient shapes behind the page morph between organic outlines. */
+@keyframes blob {
+    0%,
+    100% {
+        border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    33% {
+        border-radius: 61% 39% 35% 65% / 58% 36% 64% 42%;
+        transform: translate(4vw, -3vh) rotate(40deg) scale(1.08);
+    }
+    66% {
+        border-radius: 36% 64% 51% 49% / 35% 62% 38% 65%;
+        transform: translate(-3vw, 4vh) rotate(-30deg) scale(0.94);
+    }
+}
+
+/* Lenis smooth scrolling */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+    overflow: clip;
+}
